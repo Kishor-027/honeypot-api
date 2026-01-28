@@ -61,7 +61,7 @@ def health_check():
 @app.post("/api/honeypot")
 def honeypot(
     data: RequestBody,
-    x_api_key: str = Header(None)
+    x_api_key: str = Header(..., alias="x-api-key")
 ):
     if not x_api_key:
         raise HTTPException(status_code=401, detail="API key missing")
